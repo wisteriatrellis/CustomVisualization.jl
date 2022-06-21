@@ -1,5 +1,13 @@
 module CustomVisualization
 
-# Write your package code here.
+using Dates
+using DataFrames
+using Plots
+using Indicators
+using TimeSeriesResampler
+using TimeSeries
+
+include("trades.jl")
+
 
 end
