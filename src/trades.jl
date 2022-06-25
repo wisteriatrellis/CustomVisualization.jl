@@ -27,9 +27,9 @@ function draw_trade_chart(ohlcv::DataFrame; key = :close, trades_log = nothing)
     draw_trades_log(::Nothing) = nothing
     function draw_trades_log(df)
         for (order_type, color) in [("buy", :green), ("sell", :red)]
-            timestamps = df[df.order_type.==order_type, :timestamp]
-            rates = df[df.order_type.==order_type, :rate]
-            Plots.scatter!(timestamps, rates, color = color, label = order_type)
+            xy = df[df.order_type .== order_type, [:timestamp, key]]
+            #rates = df[df.order_type.==order_type, :rate]
+            Plots.scatter!(xy.timestamp, xy[:, key], color = color, label = order_type)
         end
     end
 
